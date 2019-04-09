@@ -1,0 +1,171 @@
+<div class="vertical-menu" style="overflow-y: auto;">
+    <a (click)="mostrarCrear()">| Crear |</a>
+    <a (click)="mostrarEdicion()">| Editar |</a>
+    <a (click)="mostrarTabl()">| Gestionar |</a>
+</div>
+
+
+<div class="divTable" style="width: 450px;;border: 1px solid #797574;" *ngIf="mostrarCrearUsuario==true || mostrarEdicionUsuario==true">
+    <div div class="divTableBody">
+        <div class="divTableRow">
+            <div>
+                <h3>{{title}}</h3>
+                <div class="divTableCell" style="float: left; width: 250px;">
+                    <div>
+                        <br>
+                        <label>Tipo de identificación</label>
+                        <br>
+                        <select name="tipoId" id="tipoId" [(ngModel)]="persona.tipoIdentificacion" [disabled]="mostrarEdicionUsuario">
+                                        <option *ngFor="let tipo  of  tipoId" value="{{tipo}}">{{tipo}}</option>                
+                                        </select>
+                    </div>
+                    <div>
+                        <br>
+                        <label>Nombres</label>
+                        <br>
+                        <input type="text" [(ngModel)]="persona.nombre">
+                    </div>
+                    <div>
+                        <br>
+                        <label>Numero telefonico</label>
+                        <br>
+                        <input type="text" [(ngModel)]="persona.telefono">
+                    </div>
+                    <div>
+                        <br>
+                        <label>Estado</label>
+                        <br>
+                        <select name="estado" id="estado" [(ngModel)]="persona.estado">
+                        <option *ngFor="let est  of  estado" value="{{est}}">{{est}}</option>
+                        </select>
+                        <br>
+                    </div>
+
+                    <div>
+                        <br>
+                        <label>Rol</label>
+                        <br>
+                        <input type="radio" name="gender" value="comprador" [(ngModel)]="persona.rol">Comprador
+                        <input type="radio" name="gender" value="vendedor" [(ngModel)]="persona.rol">Vendedor<br>
+                    </div>
+                    <div>
+                        <br>
+                        <label>Mayor de edad</label>
+
+                        <select name="mayor" id="mayor" [(ngModel)]="persona.mayorEdad">
+                            <option value="true">Si</option>
+                            <option value="false">No</option>
+                                    
+                            </select>
+
+                    </div>
+                </div>
+
+
+                <div class="divTableCell">
+                    <div>
+                        <br>
+                        <label>Número de identificación</label>
+                        <br>
+                        <input type="text" [(ngModel)]="persona.numeroIdentificacion" [disabled]="mostrarEdicionUsuario">
+                    </div>
+
+                    <div>
+                        <br>
+                        <label>Apellidos</label>
+                        <br>
+                        <input type="text" [(ngModel)]="persona.apellidos">
+                    </div>
+                    <div>
+                        <br>
+                        <label>Edad</label>
+                        <br>
+                        <input type="text" [(ngModel)]="persona.edad">
+                    </div>
+
+                    <div>
+                        <br>
+                        <label>fecha de nacimiento</label>
+                        <br>
+                        <input type="date" [(ngModel)]="persona.nacimiento">
+                    </div>
+                    <div>
+                        <br>
+                        <label>sexo</label>
+                        <br>
+                        <select name="sexo" id="sexo" [(ngModel)]="persona.sexo">
+                        <option *ngFor="let se of  sexo" value="{{se}}">{{se}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div *ngIf="mostrarCrearUsuario==true">
+            <input value="Guardar" type="submit" (click)="guardar()">
+        </div>
+        <div *ngIf="mostrarEdicionUsuario==true">
+            <input value="Editar" type="submit" (click)="editar()">
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+<!-- ----------------------------------------------------------- -->
+
+<div *ngIf="mostrarTabla==true" style="border: 1px solid #797574;">
+    <h3>{{title}}</h3>
+    <div style="width: 50%">
+        <label>Tipo de identificación</label>
+        <select name="tipoId" id="tipoId" [(ngModel)]="persona.tipoIdentificacion" [disabled]="mostrarEdicionUsuario">
+            <option *ngFor="let tipo  of  tipoId" value="{{tipo}}">{{tipo}}</option>                
+        </select>
+    </div>
+    <div style="width: 50%">
+        <label>Número de identificación</label>
+        <input type="text" [(ngModel)]="persona.numeroIdentificacion" [disabled]="mostrarEdicionUsuario">
+    </div>
+    <div>
+        <input value="Consultar" type="submit">
+    </div>
+
+
+    <table style="width: 45%;" border="2">
+        <tbody>
+            <tr>
+                <td>Nombres</td>
+                <td>Apellidos</td>
+                <td>N° Identificación</td>
+                <td>Tipo de Identificacion</td>
+                <td>Número teléfonico</td>
+                <td>fecha de nacimiento</td>
+                <td>Edad</td>
+                <td>Estado</td>
+                <td>Rol</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr *ngFor="let per of personas">
+                <td>{{per.nombre}}</td>
+                <td>{{per.apellidos}}</td>
+                <td>{{per.numeroIdentificacion}}</td>
+                <td>{{per.tipoIdentificacion}}</td>
+                <td>{{per.telefono}}</td>
+                <td>{{per.nacimiento}}</td>
+                <td>{{per.edad}}</td>
+                <td>{{per.estado}}</td>
+                <td>{{per.rol}}</td>
+                <td>
+                    <input value="Ver" type="submit" />
+                    <input value="Editar" type="submit" />
+                    <input value="Eliminar" type="submit" />
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
