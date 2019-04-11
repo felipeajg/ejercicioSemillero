@@ -1,60 +1,49 @@
-package com.hbt.semillero.entidades;
+package com.hbt.semillero.dto;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
+ * clase temporar de persona
  * @author felipe jamioy
+ *
  */
-@Entity
-@Table(name = "PERSONA")
-public class Persona implements Serializable {
-
+public class PersonaDTO implements Serializable {
+	
 	/**
-	 * 
+	 * atributos
 	 */
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(generator = "SEQ")
-	@Column(name = "ID_PERSONA")
+	
 	private Long idPersona;
 
-	@Column(name = "NUM_ID")
 	private String numeroIdentificacion;
 
-	@Column(name = "TIPO_ID")
 	private String tipoIdentificacion;
 
-	@Column(name = "NUM_TEL")
 	private String numeroTelefonico;
 
-	@Column(name = "NOMBRES")
 	private String nombres;
 
-	@Column(name = "APELLIDOS")
 	private String apellidos;
+	
+	private boolean vendedor;
+	
+	private boolean comprador;
 
-	@Column(name = "EDAD")
 	private Long edad;
 
 	/**
-	 * Obtiene el nombre completo de la persona.
-	 * 
+	 * metodos get y set de los atributos
 	 * @return
 	 */
-	protected String obtenerNombreCompleto() {
-		return getNombres() + " " + getApellidos();
+	public Long getIdPersona() {
+		return idPersona;
 	}
 
-	/*
-	 * M�todos de acceso y modificadores de atributos
-	 */
+	public void setIdPersona(Long idPersona) {
+		this.idPersona = idPersona;
+	}
 
 	public String getNumeroIdentificacion() {
 		return numeroIdentificacion;
@@ -99,17 +88,30 @@ public class Persona implements Serializable {
 	public Long getEdad() {
 		return edad;
 	}
+	
+	
+	public boolean isVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(boolean vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public boolean isComprador() {
+		return comprador;
+	}
+
+	public void setComprador(boolean comprador) {
+		this.comprador = comprador;
+	}
 
 	public void setEdad(Long edad) {
 		this.edad = edad;
 	}
-
-	public Long getIdPersona() {
-		return idPersona;
-	}
-
-	public void setIdPersona(Long idPersona) {
-		this.idPersona = idPersona;
-	}
+	
+	
+	
+	
 
 }
